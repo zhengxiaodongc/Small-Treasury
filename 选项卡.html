@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #tabBox{
+            width: 500px;
+            margin: 20px auto;
+        }
+        #navBox{
+            display: flex;
+            position: relative;
+            top: 1px;
+        }
+        #navBox>li{
+            border: 1px solid red;
+            box-sizing: border-box;
+            padding: 0 20px;
+            margin-right: 20px;
+            cursor: pointer;
+           
+        }
+        #tabBox>div{
+            height: 150px;
+            border: 1px solid red;
+            text-align: center;
+            display: none;
+        }
+        #tabBox div.active{
+            display: block;
+        }
+        #navBox li.active{
+            border-bottom-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabBox">
+        <ul id="navBox">
+            <li class="active">哈哈</li>
+            <li>呵呵</li>
+            <li>嘻嘻</li>
+        </ul>
+        <div class="active">哈哈</div>
+        <div>呵呵</div>
+        <div>嘻嘻</div>
+    </div>
+    <!-- IMPORT JS -->
+    <script>
+        //获取元素对象
+        var tabBox = document.getElementById('tabBox');
+        var navBox = document.getElementById('navBox');
+        var divs = tabBox.getElementsByTagName('div');
+        var lists = navBox.getElementsByTagName('li');
+        //绑定事件元素
+        for(var i = 0;i<lists.length;i++){
+            lists[i].dd = i;
+            lists[i].onclick = function(){
+                change(this.dd);
+            }
+        }
+        //封装个函数
+        function change (index){
+            for(var i = 0;i<lists.length;i++){
+                lists[i].className='';
+                divs[i].className='';
+            }
+            lists[index].className='active';
+            divs[index].className='active';
+        }
+    </script>
+</body>
+</html>
